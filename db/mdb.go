@@ -312,14 +312,6 @@ func main() {
 	dbx := DB{DbURI: "mongodb://localhost:27017", DbName: "test", ColName: "test1"}
 	dbx.gc = gcache.New(10000).ARC().Build()
 
-	err := dbx.gc.Set("A", "B")
-	if err != nil {
-		log.Println(err)
-	}
-	log.Println(dbx.gc.Has("A"))
-	val, err := dbx.gc.Get("A")
-	log.Println(val, err)
-
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID)
 	r.Use(middleware.Logger)
